@@ -6,11 +6,28 @@ using UnityEngine;
 [Serializable]
 public class features
 {
-    public string type;
-    public properties properties;
+    public string type { get; set; }
+    public properties properties { get; set; }
+    public geometry geometry { get; set; }
 
-    public override string ToString()
+    private List<Vector3> points;
+
+    public List<Vector3> GetPoints()
     {
-        return "Type " + type + " Properties " + properties.ToString();
+        if(points == null)
+        {
+            points = new List<Vector3>();
+
+            foreach(List<List<List<float>>> f1 in geometry.coordinates)
+                foreach(List<List<float>> f2 in f1)
+                    foreach(List<float> f3 in f2)
+                    {
+                        if(f3.Count >= 3)
+                        {
+                            points.Add(new Vector3(f3[0], f3[1], f3[2]));
+                        }
+                    }
+        }
+        return points;
     }
 }

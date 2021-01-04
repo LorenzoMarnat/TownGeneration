@@ -6,17 +6,12 @@ using UnityEngine;
 [Serializable]
 public class properties
 {
-    public string ID;
-    public float PREC_PLANI;
-    public float PREC_ALTI;
-    public string ORIGIN_BAT;
-    public float HAUTEUR;
-    public float Z_MIN;
-    public float Z_MAX;
-    public geometry geometry;
+    public string ID { get; set; }
+    public double PREC_PLANI { get; set; }
+    public double PREC_ALTI { get; set; }
+    public string ORIGIN_BAT { get; set; }
+    public int HAUTEUR { get; set; }
+    public double Z_MIN { get; set; }
+    public double Z_MAX { get; set; }
 
-    public override string ToString()
-    {
-        return "ID " + ID.ToString() + " PREC_PLANI " + PREC_PLANI.ToString() + " PREC_ALTI " + PREC_ALTI.ToString() + geometry.ToString();
-    }
 }
