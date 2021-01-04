@@ -11,12 +11,7 @@ public class JsonReader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string json = File.ReadAllText(filePath);
-
-
-        //RootObject r = JsonUtility.FromJson<RootObject>(json);
-
-        RootObject r = JsonConvert.DeserializeObject<RootObject>(json);
+        RootObject r = ReadJsonFile(filePath);
 
         Debug.Log(JsonConvert.SerializeObject(r, Formatting.Indented));
 
@@ -24,5 +19,14 @@ public class JsonReader : MonoBehaviour
         {
             Debug.Log(f.GetPoints().Count);
         }
+    }
+
+    public RootObject ReadJsonFile(string path)
+    {
+        string json = File.ReadAllText(path);
+
+        RootObject r = JsonConvert.DeserializeObject<RootObject>(json);
+
+        return r;
     }
 }
