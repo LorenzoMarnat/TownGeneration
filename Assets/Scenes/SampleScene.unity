@@ -258,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   files:
   - Bati_Zone_Part_Dieu.json
+  - Bati_Zone_Amphi.json
   polygonParent: {fileID: 1904506730}
   polygonPrefab: {fileID: 1411151598584633702, guid: 4193b4f89fc962c4eb92eeb2da4b3c1c,
     type: 3}

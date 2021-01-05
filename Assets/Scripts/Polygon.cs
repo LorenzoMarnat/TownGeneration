@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Polygon : MonoBehaviour
 {
-    [SerializeField] GameObject sphere = null;
-
     public Material mat;
 
     public string ID { get; set; }
@@ -57,6 +55,7 @@ public class Polygon : MonoBehaviour
 
     void CreateMesh()
     {
+        gameObject.transform.name = ID;
         gameObject.AddComponent<MeshFilter>();
         gameObject.AddComponent<MeshRenderer>();
 
@@ -147,7 +146,6 @@ public class Polygon : MonoBehaviour
     {
         for (int i = 0; i < vertices.Length; i++)
         {
-            //Instantiate(sphere, vertices[i], Quaternion.identity);
             Debug.Log(vertices[i]);
         }
     }
