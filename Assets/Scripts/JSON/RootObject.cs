@@ -8,5 +8,5 @@ public class RootObject
 {
     public string type { get; set; }
     public string name { get; set; }
-    public List<features> features { get; set; }
+    public List<Building> features { get; set; }
 }

@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class features
+public class Building
 {
     public string type { get; set; }
     public properties properties { get; set; }
@@ -29,5 +29,15 @@ public class features
                     }
         }
         return points;
+    }
+
+    public float GetHeight()
+    {
+        return properties.HAUTEUR;
+    }
+
+    public string GetID()
+    {
+        return properties.ID;
     }
 }
