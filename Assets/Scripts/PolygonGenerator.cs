@@ -19,7 +19,7 @@ public class PolygonGenerator : MonoBehaviour
             files[0] = "Test.json";
         }
         roots = new List<RootObject>();
-        Building.SetDefaultHeightValues(20, 174);
+        //Building.SetDefaultHeightValues(20, 174);
 
         foreach(string file in files)
         {
