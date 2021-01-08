@@ -14,11 +14,13 @@ public class Building
 
     private static float defaultHeight = 20;
     private static float defaultZValue = 200;
+    private static bool stickToFloor = true;
 
     public static void SetDefaultHeightValues(float height, float z)
     {
         defaultHeight = height;
         defaultZValue = z;
+        stickToFloor = false;
     }
     public List<Vector3> GetPoints(bool scalePoints = false, float divideBy = 1)
     {
@@ -60,7 +62,10 @@ public class Building
                             if (f3[2] >= 9999)
                                 f3[2] = defaultZValue;
 
-                            points.Add(new Vector3(f3[0]-offsetX, f3[2]-offsetY, f3[1]-offsetZ));
+                            if(stickToFloor)
+                                points.Add(new Vector3(f3[0] - offsetX, 0, f3[1] - offsetZ));
+                            else
+                                points.Add(new Vector3(f3[0]-offsetX, f3[2]-offsetY, f3[1]-offsetZ));
                         }
                     }
         }
