@@ -13,6 +13,8 @@ public class Polygon : MonoBehaviour
     public Vector3[] vertices;
     public int[] triangles;
 
+    private Vector3 center;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class Polygon : MonoBehaviour
         
     }
 
-    public void GeneratePolygonFromBuilding(Building building)
+    public Vector3 GeneratePolygonFromBuilding(Building building)
     {
         // Scale coordinates
         //Coordinates = building.GetPoints(true,5000);
@@ -51,6 +53,8 @@ public class Polygon : MonoBehaviour
 
         CreateTriangles();
         CreateMesh();
+
+        return center;
     }
 
     void CreateMesh()
@@ -106,7 +110,7 @@ public class Polygon : MonoBehaviour
     {
         vertices = new Vector3[2 * (Coordinates.Count + 1)];
 
-        Vector3 center = GetMeridianCenter();
+        center = GetMeridianCenter();
         vertices[0] = center;
         BuildMeridianVertices(1, 0);
         vertices[Coordinates.Count + 1] = center + new Vector3(0, Height, 0);

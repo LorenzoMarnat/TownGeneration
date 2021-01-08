@@ -37,7 +37,19 @@ public class PolygonGenerator : MonoBehaviour
             foreach(Building building in rootObject.features)
             {
                 Polygon polygon = Instantiate(polygonPrefab, polygonParent);
-                polygon.GeneratePolygonFromBuilding(building);
+                //Polygon polygon = Instantiate(polygonPrefab, new Vector3(0,0,0),Quaternion.identity);
+                //GameObject newBuilding = Instantiate(polygonPrefab, polygonParent);
+                //Polygon polygon = newBuilding.AddComponent<Polygon>();
+                Vector3 center = polygon.GeneratePolygonFromBuilding(building);
+                //Debug.Log(center);
+                RaycastHit hit;
+
+                if (Physics.Raycast(center, Vector3.down, out hit, Mathf.Infinity, LayerMask.GetMask("Map")))
+                {
+                    polygon.gameObject.transform.position += Vector3.down * hit.distance;
+                }
+                //Debug.Log(polygon.gameObject.transform.position);
+                //polygon.gameObject.transform.position += new Vector3(0,- 1000, 0);
             }
         }
     }
