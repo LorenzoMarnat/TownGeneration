@@ -8,7 +8,6 @@ public class JsonReader
     public static RootObject ReadJsonFile(string path)
     {
         string json = File.ReadAllText(path);
-
         RootObject r = JsonConvert.DeserializeObject<RootObject>(json);
 
         return r;

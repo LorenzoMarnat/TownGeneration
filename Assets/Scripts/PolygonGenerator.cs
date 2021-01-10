@@ -19,7 +19,8 @@ public class PolygonGenerator : MonoBehaviour
             files[0] = "Test.json";
         }
         roots = new List<RootObject>();
-        //Building.SetDefaultHeightValues(20, 174);
+
+        Building.SetDefaultHeightValues(20, 174);
 
         foreach(string file in files)
         {
@@ -37,9 +38,7 @@ public class PolygonGenerator : MonoBehaviour
             foreach(Building building in rootObject.features)
             {
                 Polygon polygon = Instantiate(polygonPrefab, polygonParent);
-                //Polygon polygon = Instantiate(polygonPrefab, new Vector3(0,0,0),Quaternion.identity);
-                //GameObject newBuilding = Instantiate(polygonPrefab, polygonParent);
-                //Polygon polygon = newBuilding.AddComponent<Polygon>();
+
                 Vector3 center = polygon.GeneratePolygonFromBuilding(building);
                 //Debug.Log(center);
                 RaycastHit hit;
@@ -48,8 +47,9 @@ public class PolygonGenerator : MonoBehaviour
                 {
                     polygon.gameObject.transform.position += Vector3.down * hit.distance;
                 }
+                else if(Physics.Raycast(center, Vector3.up, out hit, Mathf.Infinity, LayerMask.GetMask("Map")))
+                    polygon.gameObject.transform.position += Vector3.up * (hit.distance + polygon.Height);
                 //Debug.Log(polygon.gameObject.transform.position);
-                //polygon.gameObject.transform.position += new Vector3(0,- 1000, 0);
             }
         }
     }
