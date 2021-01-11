@@ -16,12 +16,17 @@ public class Building
     private static float defaultZValue = 200;
     private static bool stickToFloor = true;
 
+    // Set default building's height and altitude
+    // Those values are used when height or altitude is missing in the JSON file
     public static void SetDefaultHeightValues(float height, float z)
     {
         defaultHeight = height;
         defaultZValue = z;
         stickToFloor = false;
     }
+
+    // Return all coordinates as a list of Vector3. If the list is not set yet, create it
+    // Scale the coordinates by "divideBy" if "scalePoints" is set to true
     public List<Vector3> GetPoints(bool scalePoints = false, float divideBy = 1)
     {
         if(points == null)
@@ -46,6 +51,8 @@ public class Building
         }
         return points;
     }
+
+    // Return all coordinates with specified offsets as a list of Vector3 . If the list is not set yet, create it
     public List<Vector3> GetPointsWithOffset(float offsetX, float offsetZ, float offsetY = 0)
     {
         if (points == null)
